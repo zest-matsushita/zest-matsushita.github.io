@@ -49,6 +49,6 @@
   "forwardPorts": [3000],
   "workspaceMount": "source=${localWorkspaceFolder}/hm-portfolio,target=/workspace,type=bind,consistency=cached",
   "workspaceFolder": "/workspace",
-  "postCreateCommand": "npm install",
-  "remoteUser": "node"
+  "postCreateCommand": "corepack enable && corepack prepare pnpm@latest --activate && pnpm config set store-dir /tmp/.pnpm-store && pnpm install",
+  "remoteUser": "node" // コンテナ内のユーザー（node イメージは node ユーザー）
 }
