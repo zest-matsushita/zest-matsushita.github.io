@@ -41,6 +41,7 @@ jobs:
         with:
           node-version: "20"
           cache: pnpm
+          cache-dependency-path: hm-portfolio/pnpm-lock.yaml
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
