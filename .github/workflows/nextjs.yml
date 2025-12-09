@@ -61,12 +61,14 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: pnpm install
+        working-directory: ./hm-portfolio
       - name: Build with Next.js
         run: pnpm next build
+        working-directory: ./hm-portfolio
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./hm-portfolio/out
 
   # Deployment job
   deploy:
