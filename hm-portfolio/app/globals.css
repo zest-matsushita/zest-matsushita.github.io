@@ -1,15 +1,99 @@
 @import "tailwindcss";
+@tailwind utilities;
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #2b2721;
 }
 
+@theme {
+  --color-mint-500: oklch(0.72 0.11 178);
+  /* ベースカラー */
+  --color-base-50: #fdfcfc;
+  --color-base-100: #fafaf9;
+  --color-base-200: #f5f4f3;
+  --color-base-300: #f0efec;
+  --color-base-400: #ebe9e6;
+  --color-base-500: #e6e4e0;
+  --color-base-600: #b8b6b3;
+  --color-base-700: #8a8986;
+  --color-base-800: #5c5b5a;
+  --color-base-900: #2e2e2d;
+  /* テキストカラー */
+  --color-text-50: #eae9e9;
+  --color-text-100: #d5d4d3;
+  --color-text-200: #aaa9a6;
+  --color-text-300: #807d7a;
+  --color-text-400: #55524d;
+  --color-text-500: #2b2721;
+  --color-text-600: #221f1a;
+  --color-text-700: #1a1714;
+  --color-text-800: #11100d;
+  --color-text-900: #090807;
+  /* アクセントカラー */
+  --color-accent-50: #ecf1f1;
+  --color-accent-100: #dae2e3;
+  --color-accent-200: #b4c5c7;
+  --color-accent-300: #8fa8aa;
+  --color-accent-400: #698b8e;
+  --color-accent-500: #446e72;
+  --color-accent-600: #36585b;
+  --color-accent-700: #294244;
+  --color-accent-800: #1b2c2e;
+  --color-accent-900: #0e1617;
+}
+
+/* 設定が「インライン」(その場)で定義されることを明確化 */
 @theme inline {
+  --breakpoint-xs: 30rem;
+  --breakpoint-sp: 380px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --default---text-color: var(--color-text-500);
+  /* tailwindのクラス名[font-xxx]にlayout.tsxで定義した変数[--font-xxx]を設定する */
+  --font-zen-kaku-gothic-new: var(--font-zen-kaku-gothic-new);
+  --font-pacifico: var(--font-pacifico);
+  --font-josefin-sans: var(--font-josefin-sans);
+  --font-oswald: var(--font-oswald);
+  --font-moirai-one: var(--font-moirai-one);
+}
+
+@layer utilities {
+  /* カスタムユーティリティ：必要分だけ追加 */
+  .perspective {
+    perspective: 1000px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+  .backface-hidden {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .shaped {
+    overflow: hidden;
+    position: relative;
+  }
+  .shaped::before {
+    content: "";
+    font-family: "shape divider from ShapeDividers.com";
+    position: absolute;
+    bottom: -1px;
+    left: -1px;
+    right: -1px;
+    top: -1px;
+    z-index: 3;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-size: 140% 120px;
+    background-position: 50% 0%;
+
+    background-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35.28 2.17" preserveAspectRatio="none"><path d="M0 1c3.17.8 7.29-.38 10.04-.55 2.75-.17 9.25 1.47 12.67 1.3 3.43-.17 4.65-.84 7.05-.87 2.4-.02 5.52.88 5.52.88V0H0z" fill="%232b2721"/></svg>');
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +106,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-josefin-sans) Arial, Helvetica, sans-serif;
 }

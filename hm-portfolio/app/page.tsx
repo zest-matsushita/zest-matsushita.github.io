@@ -1,63 +1,197 @@
+"use client";
+import { EmblaCarousel } from "@/components/embla-carousel";
+import SectionTitle from "@/components/section-title";
+import SkillBadge from "@/components/skill-badge";
+import { ACTIVE_SKILLS, OTHERS_SKILLS } from "@/lib/data/skills";
+import { cn } from "@/utils/cn";
+import { ArrowUpFromDot, MapPin, Rocket } from "lucide-react";
 import Image from "next/image";
+import { useRef } from "react";
+import { ReactTyped } from "react-typed";
 
 export default function Home() {
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const skillsRef = useRef<HTMLDivElement | null>(null);
+  const worksRef = useRef<HTMLDivElement | null>(null);
+
+  const scrollToTop = () => {
+    if (!scrollContainerRef.current) return;
+
+    scrollContainerRef.current.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const scrollTo = (ref: HTMLDivElement | null) => {
+    if (!ref || !scrollContainerRef.current) return;
+
+    scrollContainerRef.current.scrollTo({
+      top: ref.offsetTop - 40, // margin分を固定値で調整してます
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div
+      className={cn(
+        "max-h-screen max-w-screen bg-base-500 text-text-500 overflow-hidden font-oswald relative leading-tight select-none",
+      )}
+    >
+      <p className="hidden md:flex md:absolute md:bottom-0 md:left-10 overflow-visible inset-0 pointer-events-none text-[8vw] text-text-100 leading-tight font-black transform-[rotate(-45deg)]">
+        WELCOME TO MY PORTFOLIO.
+        {"HELLO, WORLD!! I'M H_MATSUSHITA."} BASE IN JAPAN. {"I'M FRONT-END DEVELOPER."}
+        BUILDING CLEAN WEB EXPERIENCES.
+        CREATING RESPONSIVE WEBSITES.
+        ALL DONE WITH PASSION.
+        EXPLORING DESIGN AND LEARNING NEW SKILLS.
+        DESIGNED & BUILT BY H MATSUSHITA.
+      </p>
+
+      <main className="sm:flex sm:justify-evenly sm:items-center max-w-screen h-screen">
+        <div className="fixed bottom-0 left-0 items-end hidden md:flex z-10">
+          <Image
+            src="/profile_icon.png"
+            alt="プロフィール画像"
+            width={200}
+            height={200}
+            priority
+          />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="flex max-h-screen overflow-hidden">
+
+          <div className=" hello-world-wrapper hidden md:flex overflow-visible relative top-0 -right-45">
+            {/* 背面の文字（薄めの色など） */}
+            <div className="absolute inset-1 font-pacifico text-9xl text-accent-400 transform-[rotate(-45deg)] select-none">
+              <p>Hello,</p>
+              <p>World!!</p>
+            </div>
+
+            {/* 前面の文字（現在のメイン） */}
+            <div className="relative font-pacifico text-9xl text-text-500 transform-[rotate(-45deg)]">
+              <p>Hello,</p>
+              <p>World!!</p>
+            </div>
+          </div>
+
+          <div
+            ref={scrollContainerRef}
+            className="h-screen sm:h-[90vh] w-full md:w-[380px] sm:justify-between sm:items-start bg-base-500 overflow-y-scroll sm:border-text-500 sm:border-8 z-1">
+            <div className="flex flex-col h-full w-full">
+              <section id="top" className="pl-0 pr-0">
+                <div className="hero-container flex flex-col bg-text-500 text-base-500 p-8">
+                  <p className="text-sm text-center text-base-600 mt-2 mb-2">Welcome to my portfolio.</p>
+
+                  <div className="flex flex-col justify-center items-start">
+                    <p className="text-xl text-start wrap-break-word">
+                      {"Hello, I'm"}
+                    </p>
+                    <p className="text-4xl font-extrabold font-moirai-one w-full text-center mb-1">H_MATSUSHITA</p>
+                  </div>
+                  <div className="flex justify-end items-center gap-1.5">
+                    <h6 className="flex justify-start items-center text-xs">
+                      <MapPin className="w-4 animate-in fade-in zoom-in" /> Hokkaido, Japan
+                    </h6>
+                    <a href="https://github.com/zest-matsushita" target="_blank">
+                      <i className="devicon-github-original text-xl"></i>
+                    </a>
+                  </div>
+
+                  <p className="flex items-baseline-last gap-1 text-2xl">
+                    <span className="text-xl text-start wrap-break-word">
+                      {"I'm a"}
+                    </span>
+                    <span className="font-extrabold text-accent-500">Front-End Developer</span>,
+                  </p>
+
+                  <h1>
+                    <ReactTyped
+                      className="text-xl min-h-10"
+                      strings={[
+                        "Building clean web experiences.",
+                        "Creating responsive websites.",
+                        "All done with passion.",
+                        "Exploring design and learning new skills."
+                      ]}
+                      typeSpeed={60}
+                      backSpeed={20}
+                      backDelay={2000}
+                      loop
+                      showCursor
+                      cursorChar="|"
+                    />
+                  </h1>
+                </div>
+                <div className="relative -top-0.5 shaped h-[120px]"></div>
+              </section>
+
+              <section id="skills" className="pl-0 pr-0" ref={skillsRef}>
+                <div className="skills-container flex flex-col">
+                  <SectionTitle title="SKILLS" />
+                  <div className="grid grid-cols-4 gap-2 mx-autos mx-4">
+                    {/* <div className="grid grid-cols-3 gap-2 max-w-[480px] mx-auto"> */}
+                    <div className="flex items-center justify-center my-2">
+                      <h2 className="text-xl font-bold">
+                        Active
+                      </h2>
+                    </div>
+
+                    {/* Active 現在活発 */}
+                    {ACTIVE_SKILLS.map((skill, index) => (
+                      <div key={index} className="aspect-square min-w-1/4">
+                        <SkillBadge skill={skill} className="bg-base-200" />
+                      </div>
+                    ))}
+
+                    <div className="flex items-center justify-center my-2">
+                      <h2 className="text-xl font-bold">
+                        Others
+                      </h2>
+                    </div>
+
+                    {/* Others 経験あり */}
+                    {OTHERS_SKILLS.map((skill, index) => (
+                      <div key={index} className="aspect-square">
+                        <SkillBadge skill={skill} className="" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+
+              <section id="works" ref={worksRef}>
+                <div className="works-container flex flex-col">
+                  <SectionTitle title="WORKS" />
+                  <EmblaCarousel />
+                </div>
+              </section>
+
+              {/* PageTopボタン */}
+              <button className="cursor-pointer flex justify-evenly items-center gap-1 mx-auto my-5 p-2 bg-text-500 text-base-500 rounded-lg" onClick={() => scrollToTop()}>
+                Page TOP
+                <ArrowUpFromDot className="cursor-pointer" size={18} />
+              </button>
+
+              <div className="flex justify-center items-end gap-0.5 bg-text-500 text-base-300 px-2 py-3">
+                <p className="text-xs ">
+                  © {new Date().getFullYear()} - Designed & Built by H_Matsushita
+                </p>
+                <Rocket size={14} />
+              </div>
+            </div>
+          </div>
+          <div className="justify-between items-start hidden sm:flex flex-col sm:h-[90vh] pb-5">
+            {/* メニュー */}
+            <div className="hidden sm:flex ml-1 z-1">
+              <ul className="text-2xl font-bold">
+                <li className="cursor-pointer" onClick={() => scrollToTop()}><span className="text-3xl">T</span><span className="text-md text-accent-500">OP</span></li>
+                <li className="cursor-pointer" onClick={() => scrollTo(skillsRef.current)}><span className="text-3xl text-accent-500">S</span><span>KILLS</span></li>
+                <li className="cursor-pointer" onClick={() => scrollTo(worksRef.current)}><span className="text-3xl">W</span><span className="text-md text-accent-500">ORKS</span></li>
+              </ul>
+            </div>
+            <p className="text-xl [writing-mode:vertical-rl] w-auto z-10 animate-bounce">{"scroll → → →"}</p>
+          </div>
         </div>
       </main>
     </div>
