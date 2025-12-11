@@ -33,7 +33,7 @@ const oswald = Oswald({
 
 const zenKakuGothicNew = Zen_Kaku_Gothic_New({
   weight: ["300", "400", "500", "700"],
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   display: "swap",
   style: ["normal"],
   variable: "--zen-kaku-gothic-new",
