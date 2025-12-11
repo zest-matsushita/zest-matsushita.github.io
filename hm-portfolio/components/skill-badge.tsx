@@ -1,4 +1,4 @@
-import { Skill } from "@/lib/data/skill";
+import { Skill } from "@/types/skill";
 import { cn } from "@/utils/cn";
 import { useState } from "react";
 
@@ -70,7 +70,7 @@ export default function SkillBadge({ skill, className }: SkillProgressProps) {
                 <div className={cn(`absolute inset-0 backface-hidden flex flex-col items-center justify-evenly border-3 border-text-500 rounded-xl p-1 transition bg-base-500 ${className}`)}>
                     <SkillIcon skill_name={skill.skill_name} className="text-2xl" />
                     <div className="w-full">
-                        <div className="relative text-xs bg-text-200 text-text-500 text-center font-semibold z-10 p-0.5 rounded-sm">
+                        <div className="relative text-xs bg-text-200 text-text-500 text-center tracking-normal font-semibold z-10 p-0.5 rounded-sm">
                             {skill.status}
                         </div>
                     </div>

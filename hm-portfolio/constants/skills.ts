@@ -1,4 +1,4 @@
-import { Skill } from "@/lib/data/skill";
+import { Skill } from "@/types/skill";
 
 export const ACTIVE_SKILLS: Skill[] = [
     { skill_name: "Angular", proficiency: 80, status: "Advanced", experience: "6 years", comment: "" },

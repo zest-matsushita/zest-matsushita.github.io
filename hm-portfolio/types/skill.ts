@@ -7,11 +7,3 @@ export interface Skill {
     experience?: string;
     comment?: string;
 }
-
-export const statusColor: Record<SkillStatus, string> = {
-    Advanced: "text-green-600",
-    Intermediate: "text-yellow-600",
-    Beginner: "text-gray-500",
-};
-
-

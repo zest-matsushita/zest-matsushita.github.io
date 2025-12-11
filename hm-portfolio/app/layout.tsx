@@ -1,16 +1,19 @@
-import type { Metadata } from "next";
-import { Josefin_Sans, Moirai_One, Oswald, Pacifico, Zen_Kaku_Gothic_New } from "next/font/google";
-import "./globals.css";
+import Loading from "@/app/loading";
+import { LoadingProvider } from "@/providers/loading-provider";
 
-const moiraiOne = Moirai_One({
-  weight: "400",
-  variable: "--font-moirai-one",
-  subsets: ["latin"],
-});
+import { USER_NAME } from "@/constants/app-configs";
+import type { Metadata } from "next";
+import { Josefin_Sans, Limelight, Oswald, Pacifico, Zen_Kaku_Gothic_New } from "next/font/google";
+import "./globals.css";
 
 const josefinSans = Josefin_Sans({
   weight: "400",
   variable: "--font-josefin-sans",
+  subsets: ["latin"],
+});
+const limelight = Limelight({
+  weight: "400",
+  variable: "--font-lime-light",
   subsets: ["latin"],
 });
 
@@ -29,7 +32,7 @@ const oswald = Oswald({
 });
 
 const zenKakuGothicNew = Zen_Kaku_Gothic_New({
-  weight: ["300", "400", "500", "700"], // 使用する weight すべて
+  weight: ["300", "400", "500", "700"],
   subsets: ["latin"],
   display: "swap",
   style: ["normal"],
@@ -38,7 +41,7 @@ const zenKakuGothicNew = Zen_Kaku_Gothic_New({
 
 export const metadata: Metadata = {
   title: "HM Portfolio",
-  description: "portfolio site of H_Matsushita",
+  description: `portfolio site of ${USER_NAME}`,
 };
 
 export default function RootLayout({
@@ -55,9 +58,12 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${pacifico.variable} ${oswald.variable} ${josefinSans.variable} ${moiraiOne.variable} ${zenKakuGothicNew.variable} antialiased scroll-smooth`}
+        className={`${pacifico.variable} ${limelight.variable} ${oswald.variable} ${josefinSans.variable} ${zenKakuGothicNew.variable} antialiased scroll-smooth`}
       >
-        {children}
+        <LoadingProvider>
+          <Loading />
+          {children}
+        </LoadingProvider>
       </body>
     </html>
   );

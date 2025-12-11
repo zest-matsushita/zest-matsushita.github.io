@@ -53,9 +53,9 @@
   /* tailwindのクラス名[font-xxx]にlayout.tsxで定義した変数[--font-xxx]を設定する */
   --font-zen-kaku-gothic-new: var(--font-zen-kaku-gothic-new);
   --font-pacifico: var(--font-pacifico);
+  --font-lime-light: var(--font-lime-light);
   --font-josefin-sans: var(--font-josefin-sans);
   --font-oswald: var(--font-oswald);
-  --font-moirai-one: var(--font-moirai-one);
 }
 
 @layer utilities {

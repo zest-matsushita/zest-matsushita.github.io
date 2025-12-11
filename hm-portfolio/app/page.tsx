@@ -1,10 +1,13 @@
 "use client";
+import DeviceActionLabel from "@/components/device-action-label";
 import { EmblaCarousel } from "@/components/embla-carousel";
 import SectionTitle from "@/components/section-title";
 import SkillBadge from "@/components/skill-badge";
-import { ACTIVE_SKILLS, OTHERS_SKILLS } from "@/lib/data/skills";
+import { USER_NAME } from "@/constants/app-configs";
+import { ACTIVE_SKILLS, OTHERS_SKILLS } from "@/constants/skills";
 import { cn } from "@/utils/cn";
-import { ArrowUpFromDot, MapPin, Rocket } from "lucide-react";
+import { toPascalSnakeCase, toScreamingSnakeCase } from "@/utils/string-case";
+import { ArrowUpFromDot, LucideArrowDownSquare, MapPin, Rocket } from "lucide-react";
 import Image from "next/image";
 import { useRef } from "react";
 import { ReactTyped } from "react-typed";
@@ -35,12 +38,12 @@ export default function Home() {
   return (
     <div
       className={cn(
-        "max-h-screen max-w-screen bg-base-500 text-text-500 overflow-hidden font-oswald relative leading-tight select-none",
+        "max-h-screen max-w-screen bg-base-500 text-text-500 overflow-hidden font-oswald tracking-wider relative leading-tight select-none",
       )}
     >
       <p className="hidden md:flex md:absolute md:bottom-0 md:left-10 overflow-visible inset-0 pointer-events-none text-[8vw] text-text-100 leading-tight font-black transform-[rotate(-45deg)]">
         WELCOME TO MY PORTFOLIO.
-        {"HELLO, WORLD!! I'M H_MATSUSHITA."} BASE IN JAPAN. {"I'M FRONT-END DEVELOPER."}
+        {`HELLO, WORLD!! I'M ${toScreamingSnakeCase(USER_NAME)}.`} BASE IN JAPAN. {"I'M FRONT-END DEVELOPER."}
         BUILDING CLEAN WEB EXPERIENCES.
         CREATING RESPONSIVE WEBSITES.
         ALL DONE WITH PASSION.
@@ -61,7 +64,7 @@ export default function Home() {
 
         <div className="flex max-h-screen overflow-hidden">
 
-          <div className=" hello-world-wrapper hidden md:flex overflow-visible relative top-0 -right-45">
+          <div className=" hello-world-wrapper hidden md:flex overflow-visible relative top-0 -right-45 tracking-normal">
             {/* 背面の文字（薄めの色など） */}
             <div className="absolute inset-1 font-pacifico text-9xl text-accent-400 transform-[rotate(-45deg)] select-none">
               <p>Hello,</p>
@@ -80,14 +83,14 @@ export default function Home() {
             className="h-screen sm:h-[90vh] w-full md:w-[380px] sm:justify-between sm:items-start bg-base-500 overflow-y-scroll sm:border-text-500 sm:border-8 z-1">
             <div className="flex flex-col h-full w-full">
               <section id="top" className="pl-0 pr-0">
-                <div className="hero-container flex flex-col bg-text-500 text-base-500 p-8">
+                <div className="hero-container flex flex-col bg-text-500 text-base-500 p-8 md:min-h-[40vh]">
                   <p className="text-sm text-center text-base-600 mt-2 mb-2">Welcome to my portfolio.</p>
 
                   <div className="flex flex-col justify-center items-start">
                     <p className="text-xl text-start wrap-break-word">
                       {"Hello, I'm"}
                     </p>
-                    <p className="text-4xl font-extrabold font-moirai-one w-full text-center mb-1">H_MATSUSHITA</p>
+                    <p className="text-4xl font-extrabold font-lime-light w-full text-center mb-1">{toScreamingSnakeCase(USER_NAME)}</p>
                   </div>
                   <div className="flex justify-end items-center gap-1.5">
                     <h6 className="flex justify-start items-center text-xs">
@@ -130,11 +133,21 @@ export default function Home() {
                 <div className="skills-container flex flex-col">
                   <SectionTitle title="SKILLS" />
                   <div className="grid grid-cols-4 gap-2 mx-autos mx-4">
-                    {/* <div className="grid grid-cols-3 gap-2 max-w-[480px] mx-auto"> */}
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div className={cn("min-w-1/4 flex justify-center items-end font-pacifico font-medium text-accent-500")}>
+                      <span className="text-[8px] font-extrabold">＼</span>
+                      <DeviceActionLabel />
+                      <span className="text-[8px] font-extrabold">／</span>
+                    </div>
+
                     <div className="flex items-center justify-center my-2">
-                      <h2 className="text-xl font-bold">
-                        Active
-                      </h2>
+                      <div className="flex items-center justify-center my-2">
+                        <h2 className="text-xl font-bold">
+                          Active
+                        </h2>
+                      </div>
                     </div>
 
                     {/* Active 現在活発 */}
@@ -175,7 +188,7 @@ export default function Home() {
 
               <div className="flex justify-center items-end gap-0.5 bg-text-500 text-base-300 px-2 py-3">
                 <p className="text-xs ">
-                  © {new Date().getFullYear()} - Designed & Built by H_Matsushita
+                  © {new Date().getFullYear()} - Designed & Built by  {toPascalSnakeCase(USER_NAME)}
                 </p>
                 <Rocket size={14} />
               </div>
@@ -190,7 +203,10 @@ export default function Home() {
                 <li className="cursor-pointer" onClick={() => scrollTo(worksRef.current)}><span className="text-3xl">W</span><span className="text-md text-accent-500">ORKS</span></li>
               </ul>
             </div>
-            <p className="text-xl [writing-mode:vertical-rl] w-auto z-10 animate-bounce">{"scroll → → →"}</p>
+            <div className="flex flex-col gap-1 items-center justify-evenly z-10 animate-bounce">
+              <p className="text-xl font-lime-light [writing-mode:vertical-rl] w-auto ">{"scroll"}</p>
+              <LucideArrowDownSquare />
+            </div>
           </div>
         </div>
       </main>
