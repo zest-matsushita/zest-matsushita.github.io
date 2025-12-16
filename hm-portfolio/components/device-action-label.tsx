@@ -6,7 +6,7 @@ export default function DeviceActionLabel() {
     const label = usePointerLabel();
 
     return (
-        <span className="text-sm">
+        <span className="text-xs">
             {label} me!
         </span>
     );

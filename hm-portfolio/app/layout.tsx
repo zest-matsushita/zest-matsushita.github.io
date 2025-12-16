@@ -1,7 +1,7 @@
 import Loading from "@/app/loading";
-import { LoadingProvider } from "@/providers/loading-provider";
-
 import { USER_NAME } from "@/constants/app-configs";
+import { LoadingProvider } from "@/providers/loading-provider";
+import { GoogleTagManager } from '@next/third-parties/google';
 import type { Metadata } from "next";
 import { Josefin_Sans, Limelight, Oswald, Pacifico, Zen_Kaku_Gothic_New } from "next/font/google";
 import "./globals.css";
@@ -57,6 +57,7 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
         />
       </head>
+      <GoogleTagManager gtmId={`${process.env.GTM_ID}`} />
       <body
         className={`${pacifico.variable} ${limelight.variable} ${oswald.variable} ${josefinSans.variable} ${zenKakuGothicNew.variable} antialiased scroll-smooth`}
       >
