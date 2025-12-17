@@ -50,5 +50,9 @@
   "workspaceMount": "source=${localWorkspaceFolder}/hm-portfolio,target=/workspace,type=bind,consistency=cached",
   "workspaceFolder": "/workspace",
   "postCreateCommand": "corepack enable && corepack prepare pnpm@latest --activate && pnpm config set store-dir /tmp/.pnpm-store && pnpm install",
-  "remoteUser": "node" // コンテナ内のユーザー（node イメージは node ユーザー）
+  "remoteUser": "node", // コンテナ内のユーザー（node イメージは node ユーザー）
+  "runArgs": [
+    "--dns=8.8.8.8",
+    "--dns=8.8.4.4"
+  ]
 }
