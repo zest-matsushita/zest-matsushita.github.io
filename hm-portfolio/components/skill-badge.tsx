@@ -1,5 +1,6 @@
 import { Skill } from "@/types/skill";
 import { cn } from "@/utils/cn";
+import Image from "next/image";
 import { useState } from "react";
 
 interface SkillIconProps {
@@ -17,8 +18,8 @@ function SkillIcon({ skill_name, className = "w-6 h-6" }: SkillIconProps) {
             return <i className={`devicon-vuejs-plain ${className}`}></i>;
         case "Next.js":
             return <i className={`devicon-nextjs-plain colored ${className}`}></i>;
-        // case "Nativescript":
-        //     return <i className={`devicon-flutter-plain ${className}`}></i>;
+        case "Nativescript":
+            return <Image src="/nativescript-svgrepo-com.svg" alt="Nativescriptアイコン" width={26} height={26} loading="lazy" />;
         case "Flutter":
             return <i className={`devicon-flutter-plain ${className}`}></i>;
         case "Django":
@@ -45,6 +46,10 @@ function SkillIcon({ skill_name, className = "w-6 h-6" }: SkillIconProps) {
             return <i className={`devicon-docker-plain ${className}`}></i>;
         case "Figma":
             return <i className={`devicon-figma-plain ${className}`}></i>;
+        case "Jest":
+            return <i className={`devicon-jest-plain ${className}`}></i>;
+        case "Playwright":
+            return <i className={`devicon-playwright-plain ${className}`}></i>;
         default:
             return <i className={`devicon-javascript-plain ${className}`}></i>; // デフォルトアイコン
     }

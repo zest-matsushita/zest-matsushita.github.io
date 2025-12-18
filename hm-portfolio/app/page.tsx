@@ -58,7 +58,7 @@ export default function Home() {
             alt="プロフィール画像"
             width={200}
             height={200}
-            priority
+            loading="lazy"
           />
         </div>
 
