@@ -4,6 +4,6 @@ export interface Skill {
     skill_name: string;
     proficiency: number;
     status: SkillStatus;
-    startedAt?: string;
+    experience?: string;
     comment?: string;
 }

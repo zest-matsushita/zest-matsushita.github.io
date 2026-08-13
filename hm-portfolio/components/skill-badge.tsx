@@ -1,5 +1,4 @@
 import { Skill } from "@/types/skill";
-import { calcExperience } from "@/utils/calcExperience";
 import { cn } from "@/utils/cn";
 import Image from "next/image";
 import { useState } from "react";
@@ -84,10 +83,7 @@ export default function SkillBadge({ skill, className }: SkillProgressProps) {
                 <div className="absolute inset-0 rotate-y-180 backface-hidden flex flex-col items-center justify-around bg-text-500 text-base-500 rounded-xl p-1">
                     <p className="text-sm text-center wrap-break-word font-medium px-1">{skill.skill_name}</p>
                     <div className="flex flex-col justify-center items-center font-zen-kaku-gothic-new">
-
-                        <p className="text-xs">
-                            {skill.startedAt ? calcExperience(skill.startedAt) : ""}
-                        </p>
+                        <p className="text-xs">{skill.experience}</p>
                         {skill.comment != null && <p className="text-xs">{skill.comment}</p>}
                     </div>
                 </div>
